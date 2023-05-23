@@ -53,38 +53,3 @@ spec:
     app: rabbitmq
 
 
----
-
-apiVersion: rabbitmq.com/v1beta1
-kind: Exchange
-metadata:
-  name: checkout_ex
-  namespace: istio-system
-spec:
-  name: checkout_ex # name of the exchange
-  type: direct # default to 'direct' if not provided; can be set to 'direct', 'fanout', 'headers', and 'topic'
-  autoDelete: false
-  durable: true
-
-apiVersion: rabbitmq.com/v1beta1
-kind: Exchange
-metadata:
-  name: order_ex
-  namespace: istio-system
-spec:
-  name: order_ex # name of the exchange
-  type: direct # default to 'direct' if not provided; can be set to 'direct', 'fanout', 'headers', and 'topic'
-  autoDelete: false
-  durable: true
-
-apiVersion: rabbitmq.com/v1beta1
-kind: Exchange
-metadata:
-  name: payment_ex
-  namespace: istio-system
-spec:
-  name: payment_ex # name of the exchange
-  type: direct # default to 'direct' if not provided; can be set to 'direct', 'fanout', 'headers', and 'topic'
-  autoDelete: false
-  durable: true
-
