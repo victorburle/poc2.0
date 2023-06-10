@@ -21,15 +21,21 @@ spec:
             - name: PRODUCT_URL
               value: "http://product-service:8081"
             - name: RABBITMQ_ERLANG_COOKIE
-              value: "SWQOKODSQALRPCLNMEQG"
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq
+                  key: rabbitmq-erlang-cookie
             - name: RABBITMQ_DEFAULT_USER
-              value: "rabbitmq"
+              value: "user"
             - name: RABBITMQ_DEFAULT_PASS
-              value: "rabbitmq"
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq
+                  key: rabbitmq-password
             - name: RABBITMQ_DEFAULT_VHOST
               value: "/"
             - name: RABBITMQ_DEFAULT_HOST
-              value: "rabbitmq-service"
+              value: "rabbitmq"
 
 ---
 
