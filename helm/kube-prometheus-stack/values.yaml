@@ -4,3 +4,6 @@ prometheus:
     - job_name: rabbitmq
       static_configs:
       - targets: ['rabbitmq:9419']
+    - job_name: readis
+      static_configs:
+      - targets: ['redis-metrics:9121']
