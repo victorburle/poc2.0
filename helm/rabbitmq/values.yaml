@@ -1,0 +1,11 @@
+metrics:
+  ## @param metrics.enabled Enable exposing RabbitMQ metrics to be gathered by Prometheus
+  ##
+  enabled: true
+  ## @param metrics.plugins Plugins to enable Prometheus metrics in RabbitMQ
+  ##
+  plugins: "rabbitmq_prometheus"
+  ## Prometheus pod annotations
+  ## @param metrics.podAnnotations [object] Annotations for enabling prometheus to access the metrics endpoint
+  ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
