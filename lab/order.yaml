@@ -37,7 +37,7 @@ spec:
             - name: RABBITMQ_DEFAULT_VHOST
               value: "/"
             - name: RABBITMQ_DEFAULT_HOST
-              value: "rabbitmq-headless"
+              value: "rabbitmq"
             - name: REDIS_HOST
               value: "redis-headless:6379"          
 
