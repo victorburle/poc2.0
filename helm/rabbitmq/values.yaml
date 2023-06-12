@@ -9,3 +9,10 @@ metrics:
   ## @param metrics.podAnnotations [object] Annotations for enabling prometheus to access the metrics endpoint
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
+ingress:
+  enabled: true
+  annotations:
+      kubernetes.io/ingress.class: nginx
+  hostname: rabbitmq.minikube
+  path: /
+  pathType: Prefix
