@@ -7,3 +7,57 @@ prometheus:
     - job_name: readis
       static_configs:
       - targets: ['redis-metrics:9121']
+  autoscaling:
+    maxReplicas: 1
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    hosts: [prometheus.minikube]
+    paths: ['/']
+    pathType: Prefix
+  resources:
+    limits:
+      cpu: 300m
+      memory: 256Mi
+    requests:
+      cpu: 200m
+      memory: 128Mi
+grafana:
+  autoscaling:
+    maxReplicas: 1
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    hosts: [grafana.minikube]
+    paths: ['/']
+    pathType: Prefix
+  resources:
+    limits:
+      cpu: 300m
+      memory: 256Mi
+    requests:
+      cpu: 200m
+      memory: 128Mi
+  persistence:
+    enabled: true
+    storageClassName: "standard"
+    size: 1Gi
+alertmanager:
+  alertmanagerSpec:
+    externalUrl: http://alertmanager.minikube
+    routePrefix: /
+  ingress:
+    enabled: true
+    annotations: 
+      kubernetes.io/ingress.class: nginx
+    hosts: [alertmanager.minikube]
+    paths: ['/']
+  resources:
+    limits:
+      cpu: 300m
+      memory: 256Mi
+    requests:
+      cpu: 200m
+      memory: 128Mi
