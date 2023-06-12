@@ -18,5 +18,5 @@ helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheu
 
 Install Loki
 ```
-helm install loki grafana/loki-stack --set grafana.enabled=false
+helm install loki grafana/loki-stack --set grafana.enabled=false 
 ```
