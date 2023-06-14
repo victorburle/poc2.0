@@ -3,10 +3,10 @@ prometheus:
     additionalScrapeConfigs:
     - job_name: rabbitmq
       static_configs:
-      - targets: ['rabbitmq:9419']
+      - targets: ['rabbitmq.default.svc.cluster.local:9419']
     - job_name: readis
       static_configs:
-      - targets: ['redis-metrics:9121']
+      - targets: ['redis-metrics.default.svc.cluster.local:9121']
   autoscaling:
     maxReplicas: 1
   ingress:
