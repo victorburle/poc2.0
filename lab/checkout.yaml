@@ -36,7 +36,13 @@ spec:
                 secretKeyRef:
                   name: rabbitmq
                   key: rabbitmq-password
-
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi                  
 ---
 
 apiVersion: v1

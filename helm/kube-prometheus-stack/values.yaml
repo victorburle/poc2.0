@@ -7,6 +7,9 @@ prometheus:
     - job_name: readis
       static_configs:
       - targets: ['redis-metrics.default.svc.cluster.local:9121']
+    - job_name: cert-manager
+      static_configs:
+      - targets: ['cert-manager.cert-manager.svc.cluster.local:9402']
   autoscaling:
     maxReplicas: 1
   ingress:

@@ -1,0 +1,12 @@
+prometheus:
+  enabled: true
+  servicemonitor:
+    annotations: {}
+    enabled: true
+    honorLabels: false
+    interval: 60s
+    labels: {}
+    path: /metrics
+    prometheusInstance: default
+    scrapeTimeout: 30s
+    targetPort: 9402
