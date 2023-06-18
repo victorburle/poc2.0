@@ -1,5 +1,8 @@
 # poc2.0
-
+Create Monitoring namespace
+```
+kubectl create namespace monitoring
+```
 
 Install RabbitMQ
 ```
@@ -13,7 +16,7 @@ helm install redis oci://registry-1.docker.io/bitnamicharts/redis --values /poc2
 
 Install Kube-Prometheus-Stack
 ```
-helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack --values /poc2.0/helm/kube-prometheus-stack/values.yaml
+helm upgrade --install -n monitoring kube-prometheus-stack -n monitoring prometheus-community/kube-prometheus-stack --values /poc2.0/helm/kube-prometheus-stack/values.yaml
 ```
 
 Install Loki
