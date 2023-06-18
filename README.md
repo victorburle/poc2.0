@@ -21,5 +21,5 @@ helm upgrade --install -n monitoring kube-prometheus-stack -n monitoring prometh
 
 Install Loki
 ```
-helm install loki grafana/loki-stack --set grafana.enabled=false
+helm install loki -n monitoring grafana/loki-stack --set grafana.enabled=false
 ```
