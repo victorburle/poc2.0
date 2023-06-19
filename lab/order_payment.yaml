@@ -4,6 +4,7 @@ metadata:
   name: orderpayment
   namespace: app
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: orderpayment

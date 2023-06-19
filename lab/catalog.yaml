@@ -4,6 +4,7 @@ metadata:
   name: catalog
   namespace: app
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: catalog
