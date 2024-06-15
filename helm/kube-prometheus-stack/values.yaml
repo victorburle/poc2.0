@@ -3,20 +3,29 @@ prometheus:
     additionalScrapeConfigs:
     - job_name: rabbitmq
       static_configs:
-      - targets: ['rabbitmq.default.svc.cluster.local:9419']
-    - job_name: readis
+      - targets: ['rabbitmq.app.svc.cluster.local:9419']
+    - job_name: redis
       static_configs:
-      - targets: ['redis-metrics.default.svc.cluster.local:9121']
+      - targets: ['redis-metrics.app.svc.cluster.local:9121']
     - job_name: cert-manager
       static_configs:
       - targets: ['cert-manager.cert-manager.svc.cluster.local:9402']
+    - job_name: certs-app
+      static_configs:
+      - targets: ['x509-certificate-exporter.app.svc.cluster.local:9793']
+    - job_name: certs-certs
+      static_configs:
+      - targets: ['x509-certificate-exporter.certs.svc.cluster.local:9793']
+    - job_name: certs-opers
+      static_configs:
+      - targets: ['x509-certificate-exporter.certs.svc.cluster.local:9793']
   autoscaling:
     maxReplicas: 1
   ingress:
     enabled: true
     annotations:
       kubernetes.io/ingress.class: nginx
-    hosts: [prometheus.minikube]
+    hosts: [prometheus.kind]
     paths: ['/']
     pathType: Prefix
   resources:
@@ -33,7 +42,7 @@ grafana:
     enabled: true
     annotations:
       kubernetes.io/ingress.class: nginx
-    hosts: [grafana.minikube]
+    hosts: [grafana.kind]
     paths: ['/']
     pathType: Prefix
   resources:
@@ -49,13 +58,13 @@ grafana:
     size: 1Gi
 alertmanager:
   alertmanagerSpec:
-    externalUrl: http://alertmanager.minikube
+    externalUrl: http://alertmanager.kind
     routePrefix: /
   ingress:
     enabled: true
     annotations: 
       kubernetes.io/ingress.class: nginx
-    hosts: [alertmanager.minikube]
+    hosts: [alertmanager.kind]
     paths: ['/']
   resources:
     limits:

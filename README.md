@@ -1,11 +1,45 @@
 # poc2.0
-Create Namespaces
+Create HA Kind Cluster with provided config
+
+```
+kind create cluster --config kind/config.yaml
+```
+Create App Namespaces
 ```
 kubectl create namespace app
 ```
 
 ```
 kubectl create namespace monitoring
+```
+
+Add the repo and update it
+```
+helm repo add istio https://istio-release.storage.googleapis.com/charts
+helm repo update
+```
+
+Create Istio System  Namespaces
+
+```
+kubectl create namespace istio-system
+```
+Install Istio 
+```
+helm install istio-base istio/base -n istio-system --set defaultRevision=default
+helm install istiod istio/istiod -n istio-system --wait
+```
+Install Custom Prometheus for Istio
+```
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.22/samples/addons/prometheus.yaml
+```
+Create Istio Ingress  Namespaces
+```
+kubectl create namespace istio-ingress
+```
+Install Istio Ingress
+```
+helm install istio-ingress istio/gateway -n istio-ingress 
 ```
 
 Install RabbitMQ
