@@ -41,7 +41,10 @@ Install Istio Ingress
 ```
 helm install istio-ingress istio/gateway -n istio-ingress 
 ```
-
+Install Jaeger
+```
+kubectl -n istio-system apply -f https://raw.githubusercontent.com/istio/istio/release-1.22/samples/addons/jaeger.yaml
+```
 Install RabbitMQ
 ```
 helm install rabbitmq -n app bitnami/rabbitmq --values helm/rabbitmq/values.yaml
@@ -66,7 +69,10 @@ Install Kiali
 ```
 helm install --set cr.create=true --set cr.namespace=istio-system --set cr.spec.auth.strategy="anonymous" --namespace kiali-operator --create-namespace kiali-operator kiali/kiali-operator
 ```
-
+Expose Kiali
+```
+kubectl -n istio-system  port-forward service/kiali 20001:20001
+```
 Install Kube-Prometheus-Stack
 
 Add repo
