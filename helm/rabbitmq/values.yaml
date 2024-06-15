@@ -13,7 +13,7 @@ ingress:
   enabled: true
   annotations:
       kubernetes.io/ingress.class: nginx
-  hostname: rabbitmq.minikube
+  hostname: rabbitmq.kind
   path: /
   pathType: Prefix
 resources:
