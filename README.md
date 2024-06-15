@@ -139,9 +139,7 @@ kubectl port-forward -n monitoring  service/kube-prometheus-stack-grafana 8080:8
 
 Install X509 Cert exporter
 ```
-helm install -n app x509-certificate-exporter-app enix/x509-certificate-exporter
 kubectl create namespace certs
 helm install -n certs x509-certificate-exporter-certs enix/x509-certificate-exporter
-helm install -n monitoring x509-certificate-exporter-monitoring enix/x509-certificate-exporter
 ```
 
