@@ -7,15 +7,9 @@ prometheus:
     - job_name: redis
       static_configs:
       - targets: ['redis-metrics.app.svc.cluster.local:9121']
-    - job_name: certs-app
-      static_configs:
-      - targets: ['x509-certificate-exporter.app.svc.cluster.local:9793']
     - job_name: certs-certs
       static_configs:
-      - targets: ['x509-certificate-exporter.certs.svc.cluster.local:9793']
-    - job_name: certs-monitoring
-      static_configs:
-      - targets: ['x509-certificate-exporter.monitoring.svc.cluster.local:9793']
+      - targets: ['x509-certificate-exporter-certs.certs.svc.cluster.local:9793']
   autoscaling:
     maxReplicas: 1
   ingress:
