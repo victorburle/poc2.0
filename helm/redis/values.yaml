@@ -37,3 +37,7 @@ metrics:
   ## @param metrics.startupProbe.failureThreshold Failure threshold for startupProbe
   ## @param metrics.startupProbe.successThreshold Success threshold for startupProbe
   ##
+persistence:
+  enabled: true
+  claimName: data
+  storageClass: standard

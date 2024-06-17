@@ -23,4 +23,7 @@ resources:
   requests:
     cpu: 500m
     memory: 512Mi
+persistence:
+  storageClass: standard
+  size: 2Gi
 
