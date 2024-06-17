@@ -104,6 +104,10 @@ Install Lab
 kubectl apply -f lab/
 ```
 
+Expose RabbitMQ
+```
+kubectl port-forward -n app service/rabbitmq 15762:15762
+```
 Login RabbitMQ
 ```
 user: user
@@ -139,6 +143,7 @@ kubectl port-forward -n monitoring  service/kube-prometheus-stack-grafana 8080:8
 
 Install X509 Cert exporter
 ```
+helm repo add enix https://charts.enix.io
 kubectl create namespace certs
 helm install -n certs x509-certificate-exporter-certs enix/x509-certificate-exporter
 ```
