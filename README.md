@@ -94,11 +94,6 @@ Expose Prometheus
 kubectl port-forward service/kube-prometheus-stack-prometheus 8090:9090
 ```
 
-Install Loki
-```
-helm install loki -n monitoring grafana/loki-stack --set grafana.enabled=false
-```
-
 Install Lab
 ```
 kubectl apply -f lab/
@@ -109,7 +104,9 @@ Expose RabbitMQ
 kubectl port-forward -n app service/rabbitmq 15762:15762
 ```
 Login RabbitMQ
+
 ```
+URL: http://localhost:15762
 user: user
 password: kvs rabbitmq rabbitmq-password
 ```
@@ -141,6 +138,12 @@ Expose Grafana
 kubectl port-forward -n monitoring  service/kube-prometheus-stack-grafana 8080:80 
 ```
 
+Login Grafana
+```
+URL: http://localhost:8080
+user: admin
+senha: prom-operator
+```
 Install X509 Cert exporter
 ```
 helm repo add enix https://charts.enix.io
